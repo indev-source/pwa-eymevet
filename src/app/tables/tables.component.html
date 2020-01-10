@@ -1,49 +1,35 @@
 <div class="main-content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="header">
-                        <h4 class="title">Striped Table with Hover</h4>
-                        <p class="category">Here is a subtitle for this table</p>
-                    </div>
-                    <div class="content table-responsive table-full-width">
-                          <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let row of tableData1.dataRows">
-                                        <td *ngFor="let cell of row">{{cell}}</td>
-                                    </tr>
-                                </tbody>
-                          </table>
-
-                    </div>
+        <div class="col-md-3 col-lg-3 col-xs-12 col-sm-12" *ngFor="let product of products">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">{{product.id}}.{{product.attributes.name}}</h4>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <div class="card card-plain">
-                    <div class="header">
-                        <h4 class="title">Table on Plain Background</h4>
-                        <p class="category">Here is a subtitle for this table</p>
-                    </div>
-                    <div class="content table-responsive table-full-width">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th *ngFor="let cell of tableData2.headerRow">{{ cell }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let row of tableData2.dataRows">
-                                    <td *ngFor="let cell of row">{{cell}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="content">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Precios:</strong> 
+                            <span class="c-green">
+                                [
+                                    ${{product.attributes.price1}}, 
+                                    ${{product.attributes.price2}}, 
+                                    ${{product.attributes.price3}}
+                                ]
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Existencia: </strong> <span>{{product.attributes.stock}}</span>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Categoria: </strong>{{product.relationsships.categoria}}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Marca: </strong>{{product.relationsships.marca}}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Ruta: </strong>{{product.relationsships.ruta}}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

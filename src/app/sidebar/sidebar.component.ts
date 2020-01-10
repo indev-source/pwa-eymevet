@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -8,32 +10,37 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'pe-7s-graph', class: '' },
-    { path: '/user', title: 'User Profile',  icon:'pe-7s-user', class: '' },
-    { path: '/table', title: 'Table List',  icon:'pe-7s-note2', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'pe-7s-news-paper', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'pe-7s-science', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'pe-7s-map-marker', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'pe-7s-bell', class: '' },
-    { path: '/upgrade', title: 'Upgrade to PRO',  icon:'pe-7s-rocket', class: 'active-pro' },
+    { path: '/dashboard', title: 'Menu', icon: 'pe-7s-graph', class: '' },
+    { path: '/user', title: 'Perfil', icon: 'pe-7s-user', class: '' },
+    { path: '/productos', title: 'Productos', icon: 'pe-7s-note2', class: '' },
+    { path: '/typography', title: 'Ventas', icon: 'pe-7s-news-paper', class: '' },
+    { path: '/icons', title: 'Creditos', icon: 'pe-7s-science', class: '' },
+    { path: '/clientes', title: 'Clientes', icon: 'pe-7s-map-marker', class: '' },
+    { path: '/notifications', title: 'Sincronizar', icon: 'pe-7s-bell', class: '' },
+
 ];
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html'
+    selector: 'app-sidebar',
+    templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent implements OnInit {
-  menuItems: any[];
+    menuItems: any[];
 
-  constructor() { }
+    constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
-  ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
-  }
-  isMobileMenu() {
-      if ($(window).width() > 991) {
-          return false;
-      }
-      return true;
-  };
+    ngOnInit() {
+        this.menuItems = ROUTES.filter(menuItem => menuItem);
+    }
+    isMobileMenu() {
+        if ($(window).width() > 991) {
+            return false;
+        }
+        return true;
+    };
+    logout(){
+        this.afAuth.auth.signOut().then(()=>{
+            this.router.navigate(['/login']);
+        });
+    }
 }
