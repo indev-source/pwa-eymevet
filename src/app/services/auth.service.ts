@@ -8,13 +8,14 @@ import * as firebase from 'firebase/app';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/filter';
+import { UsersService } from './users.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
-    constructor(private afAuth: AngularFireAuth) {}
+    constructor(private afAuth: AngularFireAuth, private userS: UsersService) {}
 
     getUser():Observable<IUser>{
         return this.afAuth.authState
@@ -28,7 +29,8 @@ export class AuthService {
     login(): Promise<void> {
         return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
             .then(result => {
-                console.log(result)
+                console.log(result.user.email)
+                this.userS.add({uid:result.user.uid,email:result.user.email});
             }).catch(console.log);
     }
 }

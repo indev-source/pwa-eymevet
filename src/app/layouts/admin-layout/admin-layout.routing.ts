@@ -8,6 +8,8 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { CreatorCustomersComponent } from '../../customer/creator-customers/creator-customers.component';
+
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
@@ -18,4 +20,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'clientes',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'agregar-cliente', component: CreatorCustomersComponent}
 ];
