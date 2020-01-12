@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerServerService } from 'app/services/customer-server.service';
+import { CustomerService } from 'app/services/customer.service';
 
 @Component({
     selector: 'app-maps',
@@ -10,19 +11,12 @@ import { CustomerServerService } from 'app/services/customer-server.service';
 export class MapsComponent implements OnInit {
 
     public customers:any = [];
-    constructor(private customerServerService: CustomerServerService) { }
+    constructor(private customerS:CustomerService) { }
 
     ngOnInit() { 
-        this.getCustomers();
+       
     }
 
-    public getCustomers(){
-        this.customerServerService.getCustomerResource().subscribe((res:any)=>{
-            this.customers = res.data;
-            console.log(this.customers)
-        },(error:any)=>{
-
-        });
-    }
+    
 
 }

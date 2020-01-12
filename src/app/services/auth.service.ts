@@ -20,7 +20,7 @@ export class AuthService {
     getUser():Observable<IUser>{
         return this.afAuth.authState
             .take(1)
-            .filter(user => !user)
+            .filter(user => !!user)
             .map((user: firebase.User)=>{
                 return user as IUser;
             });

@@ -16,7 +16,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/typography', title: 'Ventas', icon: 'pe-7s-news-paper', class: '' },
     { path: '/icons', title: 'Creditos', icon: 'pe-7s-science', class: '' },
     { path: '/clientes', title: 'Clientes', icon: 'pe-7s-map-marker', class: '' },
-    { path: '/notifications', title: 'Sincronizar', icon: 'pe-7s-bell', class: '' },
+    { path: '/sincronizacion', title: 'Sincronizar', icon: 'pe-7s-bell', class: '' },
 
 ];
 

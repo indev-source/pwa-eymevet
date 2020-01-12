@@ -6,7 +6,7 @@
                     <h4 class="title">Registrar nuevo cliente</h4>
                 </div>
                 <div class="content">
-                    <form [formGroup]="formGroup" (ngSubmit)="OnRegister()">
+                    <form [formGroup]="formGroup" (ngSubmit)="save()">
                         <div class="form-group">
                             <label for="">Nombre del cliente</label>
                             <input required  type="text" class="form-control" formControlName="name"  name="name">
